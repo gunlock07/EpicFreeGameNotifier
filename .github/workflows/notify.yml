@@ -1,8 +1,8 @@
 name: Epic free game notifications
 on:
   schedule:
-    # UTC, at minute 17 and 47 to reduce top-of-hour congestion.
-    - cron: '17,47 * * * *'
+    # UTC, at minute 00 and 30 to reduce top-of-hour congestion.
+    - cron: '00,30 * * * *'
   workflow_dispatch:
 permissions:
   contents: write

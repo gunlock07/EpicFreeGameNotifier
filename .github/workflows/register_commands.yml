@@ -1,18 +1,24 @@
 name: Register slash commands
+
 on:
   workflow_dispatch:
+
 permissions:
   contents: read
+
 jobs:
   register:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
         with:
-          python-version: '3.12'
+          node-version: '22'
       - name: Register Discord slash commands
         env:
           DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
           DISCORD_APPLICATION_ID: ${{ vars.DISCORD_APPLICATION_ID }}
-        run: python register_commands.py
+        run: node scripts/register-commands.mjs
+
